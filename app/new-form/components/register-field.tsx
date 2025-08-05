@@ -94,6 +94,7 @@ export function RegisterField(props: RegisterFieldProps) {
           <Label>
             Nome do campo <span className="text-red-500">*</span>
           </Label>
+
           <Input
             value={fieldDraft.label}
             onChange={(e) =>
@@ -168,7 +169,6 @@ export function RegisterField(props: RegisterFieldProps) {
             <Label>Campo obrigatório?</Label>
           </div>
 
-          {/* CAMPO DEPENDENTE */}
           {fields.length > 0 && (
             <>
               <Label className="mt-4">Este campo depende de:</Label>
@@ -194,7 +194,7 @@ export function RegisterField(props: RegisterFieldProps) {
                 className="border p-1 rounded"
               >
                 <option value="">Nenhum</option>
-                {fields.map((f: any) => (
+                {fields.map((f: { label: string; id: number }) => (
                   <option key={f.id} value={f.id}>
                     {f.label}
                   </option>
@@ -206,7 +206,6 @@ export function RegisterField(props: RegisterFieldProps) {
                   <Label>Valor que ativa este campo:</Label>
                   <Input
                     value={fieldDraft.dependsOn.value}
-                    disabled={!fieldDraft.dependsOn?.fieldId}
                     onChange={(e) =>
                       setFieldDraft((prev) => ({
                         ...prev,
@@ -228,7 +227,7 @@ export function RegisterField(props: RegisterFieldProps) {
             onClick={() => {
               setOpenDialog(false);
             }}
-            className="bg-red-500 text-white"
+            className="bg-red-500 hover:bg-red-600 text-white"
           >
             Cancelar
           </AlertDialogCancel>

@@ -1,4 +1,5 @@
 export const ROUTES = {
   home: "/",
-  system: "/system",
+  newForm: "/new-form",
+  oldForm: "/old-form"
 }

@@ -12,7 +12,7 @@ export default function Home() {
       <Image src={Logo} width={550} height={550} alt="" />
 
       <Link
-        href={ROUTES.system}
+        href={ROUTES.newForm}
         className="bg-green-700 px-4 py-2 rounded-md text-white hover:outline-2"
       >
         Ir para o Sistema
