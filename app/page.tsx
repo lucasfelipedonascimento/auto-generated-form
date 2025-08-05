@@ -1,8 +1,8 @@
 import Image from "next/image";
 
 import Logo from "@/public/logo.png";
-import Link from "next/link";
 import { ROUTES } from "@/constants/routes";
+import { LinkTo } from "@/components/link-to";
 
 export default function Home() {
   return (
@@ -11,12 +11,10 @@ export default function Home() {
 
       <Image src={Logo} width={550} height={550} alt="" />
 
-      <Link
-        href={ROUTES.newForm}
-        className="bg-green-700 px-4 py-2 rounded-md text-white hover:outline-2"
-      >
-        Ir para o Sistema
-      </Link>
+      <div className="flex gap-3 items-center">
+        <LinkTo title="Formulários Cadastrados" href={ROUTES.oldForm} />
+        <LinkTo title="Novo Formulário" href={ROUTES.newForm} />
+      </div>
     </div>
   );
 }

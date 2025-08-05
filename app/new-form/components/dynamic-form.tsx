@@ -17,12 +17,15 @@ import { Field } from "@/types/Field";
 import { RegisterField } from "./register-field";
 import axios from "axios";
 import { local } from "@/app/env/local";
+import { ROUTES } from "@/constants/routes";
+import { useRouter } from "next/navigation";
 
 type FormValues = {
   fields: Field[];
 };
 
 export function DynamicForm() {
+  const router = useRouter();
   const [openDialog, setOpenDialog] = React.useState(false);
   const [formName, setFormName] = React.useState("");
 
@@ -40,7 +43,7 @@ export function DynamicForm() {
   const watchFields = methods.watch("fields");
 
   async function handleSubmitForm() {
-    await axios.post(`${local.API_URL}/forms`, {
+    const result = await axios.post(`${local.API_URL}/forms`, {
       name: formName,
       questions: watchFields.map((field, idx) => {
         return {
@@ -64,6 +67,10 @@ export function DynamicForm() {
         };
       }),
     });
+
+    if (result.status === 201) {
+      router.push(ROUTES.oldFormId.replace(":id", result.data.id));
+    }
   }
 
   return (
@@ -160,7 +167,6 @@ export function DynamicForm() {
                     variant="destructive"
                     type="button"
                     onClick={() => remove(index)}
-                    className="hover:bg-red-600"
                   >
                     <FaTrashAlt />
                   </Button>
