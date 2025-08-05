@@ -2,9 +2,7 @@ import { Question } from "@/types/Question";
 import { local } from "../env/local";
 import { Label } from "@/components/ui/label";
 import axios from "axios";
-import Link from "next/link";
 import { ROUTES } from "@/constants/routes";
-import { FaArrowLeft } from "react-icons/fa";
 import { LinkReturn } from "@/components/link-return";
 
 type Formulario = {
@@ -49,7 +47,6 @@ export default async function OldForm() {
 
       <div className="flex flex-col gap-3">
         <LinkReturn title="Voltar para Cadastro" href={ROUTES.newForm} />
-
         <LinkReturn title="Voltar para Tela Inicial" href={ROUTES.home} />
       </div>
     </div>

@@ -35,7 +35,6 @@ export default async function Page({
       </div>
 
       <LinkReturn title="Voltar para Cadastro" href={ROUTES.newForm} />
-
       <LinkReturn title="Voltar para Tela Inicial" href={ROUTES.home} />
     </div>
   );

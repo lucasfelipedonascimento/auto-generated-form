@@ -28,7 +28,6 @@ export function DynamicForm() {
   const router = useRouter();
   const [openDialog, setOpenDialog] = React.useState(false);
   const [formName, setFormName] = React.useState("");
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const methods = useForm<FormValues>({
     defaultValues: {

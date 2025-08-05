@@ -1,9 +1,8 @@
 import Image from "next/image";
 
 import Logo from "@/public/logo.png";
-import Link from "next/link";
 import { ROUTES } from "@/constants/routes";
-import { FaArrowRight } from "react-icons/fa";
+import { LinkTo } from "@/components/link-to";
 
 export default function Home() {
   return (
@@ -13,21 +12,8 @@ export default function Home() {
       <Image src={Logo} width={550} height={550} alt="" />
 
       <div className="flex gap-3 items-center">
-        <Link
-          href={ROUTES.oldForm}
-          className="bg-green-700 hover:bg-green-800 text-white font-semibold p-2 flex items-center gap-2 justify-center mx-auto rounded-md"
-        >
-          Formulários Cadastrados
-          <FaArrowRight />
-        </Link>
-
-        <Link
-          href={ROUTES.newForm}
-          className="bg-green-600 hover:bg-green-700 text-white font-semibold p-2 flex items-center gap-2 justify-center mx-auto rounded-md"
-        >
-          Novo Formulário
-          <FaArrowRight />
-        </Link>
+        <LinkTo title="Formulários Cadastrados" href={ROUTES.oldForm} />
+        <LinkTo title="Novo Formulário" href={ROUTES.newForm} />
       </div>
     </div>
   );
